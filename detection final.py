@@ -50,7 +50,7 @@ percentage_attackers = int(input("Enter the percent of attackers: "))
 alpha = float(input("Enter the attack probability among 0.5, 0.7, and 1.0: "))
 
 # Get the threshold for classification based on loss
-detection_threshold = float(input("Enter the threshold for classification: "))
+threshold = float(input("Enter the threshold for classification: "))
 
 # Define the GAT model for graph learning
 class GATModel(nn.Module):
@@ -441,7 +441,7 @@ for round_num in range(num_round):
             output = gat_model(data_graph).view(-1)
             target = torch.tensor([0.0 if client_folder not in actual_attackers else 1.0], dtype=torch.float)
             loss = gat_criterion(output, target)
-            predicted_label = 0 if loss < detection_threshold else 1  # Classify based on loss threshold
+            predicted_label = 0 if loss < threshold else 1  # Classify based on loss threshold
             if predicted_label == 1 and client_folder in actual_attackers:
                 detected_attackers += 1
                 TP += 1
