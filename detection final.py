@@ -77,7 +77,7 @@ gat_criterion = nn.BCEWithLogitsLoss()  # Binary cross-entropy loss with logits
 
 # Initialize and load the GAT model (pre-trained on all benign clients)
 gat_model = GATModel(in_channels=6, out_channels=16)
-gat_model_path = "path/to/your/GAT_model.pth"   # Replace the placeholder with the actual path to your GAT model file
+gat_model_path = "path/to/your/GAT_model.pth"   # Replace the placeholder with the actual path to your pre-trained GAT model
 gat_model.load_state_dict(torch.load(gat_model_path))
 gat_model.eval()
 
