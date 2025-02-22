@@ -592,47 +592,6 @@ overall_f1 = 2 * overall_precision * overall_recall / (overall_precision + overa
 gat_metrics_writer.writerow(["Overall", TP_total, FP_total, TN_total, FN_total, FNR_total, FPR_total, DR_total,
                              FDR_total, overall_accuracy, overall_precision, overall_recall, overall_f1])   
 
-# Plotting the results
-plt.figure(figsize=(15, 10))
-rounds = list(range(num_round))
-plt.plot(rounds, test_accuracies, marker='o', label='Test Accuracy')
-plt.xlabel('Number of Rounds')
-plt.ylabel('Testing Accuracy')
-plt.title(f'Testing Accuracy vs Number of Rounds for {detection_threshold}_threshold_{percentage_attackers}%_attackers_alpha_{alpha}')
-plt.legend()
-plt.grid(True)
-x_ticks = rounds[::20]
-plt.xticks(x_ticks)
-plt.yticks(np.arange(0, 1.2, 0.2))
-image_path = f'E:/CODES/scenario 2/Graph representation/GAT detection/graphs/{detection_threshold}_threshold_{percentage_attackers}%attackers_alpha_{alpha}_testing_accuracy.png'
-plt.savefig(image_path)
-
-plt.figure(figsize=(15, 10))
-plt.plot(rounds, average_train_accuracies, marker='o', label='Average Train Accuracy')
-plt.xlabel('Number of Rounds')
-plt.ylabel('Average Train Accuracy')
-plt.title(f'Average Train Accuracy vs Number of Rounds for {detection_threshold}_threshold_{percentage_attackers}%_attackers_alpha_{alpha}')
-plt.legend()
-plt.grid(True)
-plt.xticks(x_ticks)
-plt.yticks(np.arange(0, 1.2, 0.2))
-image_path = f'E:/CODES/scenario 2/Graph representation/GAT detection/graphs/{detection_threshold}_threshold_{percentage_attackers}%attackers_alpha_{alpha}_attackers_training_accuracy.png'
-plt.savefig(image_path)
-
-plt.figure(figsize=(15, 10))
-plt.plot(rounds, precision_scores, marker='o', label='Precision')
-plt.plot(rounds, recall_scores, marker='*', label='Recall')
-plt.plot(rounds, f1_scores, marker='^', label='F1 Score')
-plt.xlabel('Number of Rounds')
-plt.ylabel('Score')
-plt.title(f'Precision, Recall, and F1 Score for {detection_threshold}_threshold_{percentage_attackers}%_attackers_alpha_{alpha}')
-plt.legend()
-plt.grid(True)
-plt.xticks(x_ticks)
-plt.yticks(np.arange(0, 1.2, 0.2))
-image_path = f'E:/CODES/scenario 2/Graph representation/GAT detection/graphs/{detection_threshold}_threshold_{percentage_attackers}%attackers_alpha_{alpha}_attackers_evaluation_metrics.png'
-plt.savefig(image_path)
-
 # Close the CSV files
 csv_file.close()
 avg_train_acc_file.close()
